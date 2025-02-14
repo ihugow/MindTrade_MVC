@@ -1,0 +1,149 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+<!--index css-->
+<link rel="stylesheet" href="~/css/index/index.css" asp-append-version="true" />
+
+<div class="main_container container">
+    <section class="prologo">
+        <div class="prologo_txt">
+            <h1 class="title"> Alavanque o <br>seu potencial <span class="span_grad"><strong>adquirindo</strong></span> ou <span class=" span_grad"><strong>compartilhando</strong></span> conhecimento </h1>
+
+            <p class="description tDesc"> Conectamos mentes curiosas e apaixonadas por aprender. Seja você um expert ou um entusiasta, aqui é o lugar ideal para trocar conhecimentos. </p>
+        </div><!-- prologo-txt-->
+
+        <div class="prologo_img">
+            <img src="~/images/index/mindtrade-student.png" alt="Imagem de uma estudante apontando para o titulo da página.">
+        </div><!-- prologo-img-->
+    </section><!-- prologo  -->
+
+    <section class="beneficios">
+
+        <div class="blocks_cont">
+            <div class="block">
+                <div class="icon_and_texts">
+                    <div class="icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+
+                    <div class="texts">
+                        <h3>Conhecimento</h3>
+                        <p>Aqui você terá acesso gratiuto à conhecimento em várias áreas da educação, de forma pratica e eficaz.</p>
+                    </div>
+                </div>
+                <div class="glow_bar"></div>
+            </div>
+
+            <div class="block">
+                <div class="icon_and_texts">
+                    <div class="icon">
+                        <i class="fa-solid fa-house-laptop"></i>
+                    </div>
+
+                    <div class="texts">
+                        <h3>Acesso Remoto</h3>
+                        <p>Estude do conforto do seu lar, a qualquer momento somente acessando nossa plataforma.</p>
+                    </div>
+                </div>
+                <div class="glow_bar"></div>
+            </div>
+
+            <div class="block">
+                <div class="icon_and_texts">
+                    <div class="icon">
+                        <i class="fa-solid fa-laptop"></i>
+                    </div>
+
+                    <div class="texts">
+                        <h3>Multi Device</h3>
+                        <p>Nossa plataforma é totalmente projetada para que você acesse de todos os tipos de dispositivos e telas.</p>
+                    </div>
+                </div>
+                <div class="glow_bar"></div>
+            </div>
+
+            <div class="block">
+                <div class="icon_and_texts">
+                    <div class="icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <div class="texts">
+                        <h3>Comunidade</h3>
+                        <p>Nossa comunidade promove o desenvolvimento pessoal e profissional, melhora a eficiência e produtividade através da troca de experiências.</p>
+                    </div>
+                </div>
+                <div class="glow_bar"></div>
+            </div>
+        </div>
+
+        <img class="img" src="~/images/index/mindtrade-gallery.png" alt="">
+    </section><!-- beneficios  -->
+
+    <div class="recents_glow_bar"></div>
+    <section class="recentes">
+
+        <h2>Conteúdos recentes</h2>
+
+        <div class="card_wrapper">
+
+            <input type="radio" name="btn-radio" id="radio1" checked>
+            <input type="radio" name="btn-radio" id="radio2">
+            <input type="radio" name="btn-radio" id="radio3">
+            <input type="radio" name="btn-radio" id="radio4">
+            <input type="radio" name="btn-radio" id="radio5">
+            <input type="radio" name="btn-radio" id="radio6">
+
+            <div class="card_slider">
+
+                <a class="card first" asp-area="" asp-controller="Materias" asp-action="Matematica">
+                    <img src="~/images/global/Icons/matematica.png" alt="">
+                    <h3>Matemática</h3>
+                    <p>Explore o que nossa comunidade está compartilhando sobre matemática.</p>
+                </a> <!-- card -->
+
+                <a class="card" asp-area="" asp-controller="Materias" asp-action="Portugues">
+                    <img src="~/images/global/Icons/portugues.png" alt="">
+                    <h3>Português</h3>
+                    <p>Explore o que nossa comunidade está compartilhando sobre português.</p>
+                </a> <!-- card -->
+
+                <a class="card" asp-area="" asp-controller="Materias" asp-action="Biologia">
+                    <img src="~/images/global/Icons/biologia.png" alt="">
+                    <h3>Biologia</h3>
+                    <p>Explore o que nossa comunidade está compartilhando sobre biologia.</p>
+                </a> <!-- card -->
+
+                <a class="card" asp-area="" asp-controller="Materias" asp-action="Geografia">
+                    <img src="~/images/global/Icons/geografia.png" alt="">
+                    <h3>Geografia</h3>
+                    <p>Explore o que nossa comunidade está compartilhando sobre geografia.</p>
+                </a> <!-- card -->
+
+                <a class="card" asp-area="" asp-controller="Materias" asp-action="Historia">
+                    <img src="~/images/global/Icons/historia.png" alt="">
+                    <h3>História</h3>
+                    <p>Explore o que nossa comunidade está compartilhando sobre história.</p>
+                </a> <!-- card -->
+
+                <a class="card" asp-area="" asp-controller="Materias" asp-action="Quimica">
+                    <img src="~/images/global/Icons/quimica.png" alt="">
+                    <h3>Química</h3>
+                    <p>Explore o que nossa comunidade está compartilhando sobre química.</p>
+                </a> <!-- card -->
+            </div> <!-- card_slider -->
+
+            <div class="navigation">
+                <label for="radio1" class="bar" id="nav_btn1"></label>
+                <label for="radio2" class="bar" id="nav_btn2"></label>
+                <label for="radio3" class="bar" id="nav_btn3"></label>
+                <label for="radio4" class="bar" id="nav_btn4"></label>
+                <label for="radio5" class="bar" id="nav_btn5"></label>
+                <label for="radio6" class="bar" id="nav_btn6"></label>
+            </div> <!-- navigation -->
+
+        </div><!-- card_wrapper-->
+
+    </section><!-- recentes  -->
+
+</div>

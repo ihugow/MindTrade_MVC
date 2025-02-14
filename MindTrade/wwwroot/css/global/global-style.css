@@ -1,0 +1,487 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* ----- GLOBAL STYLE ------ */
+:root {
+    /* Colors */
+    --color-header: rgba(1, 5, 21, 0.759);
+    --color-dark-blue: #2e55e9;
+    --color-light-blue: #00d8ff;
+    --color-main-text: #fff;
+    --color-second-text: #9ea0a7;
+    --color-card: rgba(37, 40, 61, 0.654);
+    --color-bg-box: rgba(15, 16, 19, 0.446);
+    --color-page-frame: rgb(15, 16, 19, 0.446);
+
+    /* Typography */
+    --inter-font: "Inter",sans-serif; 
+    --t1-font-size: 2rem;
+    --t2-font-size: 1.6rem;
+    --t3-font-size: 1.5rem;
+    --desc-font-size: 1rem;
+    --desc-line-height: 1.3rem;
+    --t1-font-weight: 800;
+    --t2-font-weight: 700;
+    --t3-font-weight: 600;
+    --desc-font-weight: 400;
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--inter-font);
+}
+
+header {
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    width: 100%;
+    background-color: var(--color-header);
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 1px 10px 1px rgba(0, 0, 0, 0.405);
+
+.header_container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 5px 12px;
+        height: 70px;
+        height: 100%;
+
+        & .mindtrade_logo {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            text-decoration: none;
+                                    
+            & img {
+                width: 50px;
+            }
+
+            & .mindtrade_txt {
+                color: var(--color-main-text);
+                font-size: 28px;
+                font-weight: 800;
+                text-transform: uppercase;
+                display: none;
+            }
+        }
+
+        & .header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            & .search-box {
+                background-color: #353b48;
+                border-radius: 50px;
+                padding: 5px;
+                box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.39);
+
+                & .search-txt {
+                    border: none;
+                    background: none;
+                    outline: none;
+                    float: left;
+                    padding: 0;
+                    color: #fff;
+                    font-size: 14px;
+                    transition: 0.4s;
+                    line-height: 25px;
+                    width: 0;
+                }
+
+                & .search-btn {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: #ffffff;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
+                    transition: 1s;
+                    text-decoration: none;
+                    user-select: none;
+                    background-color: #353b48;
+
+                    & i {
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .search-box:hover > .search-txt {
+                width: 200px;
+                padding: 0 6px;
+            }
+
+            .search-box:hover > .search-btn {
+                background-color: #fff;
+                color: #000;
+            }
+
+            & .join {
+                color: #fff;
+                font-family: var(--inter-font);
+                font-size: 0.8rem;
+                font-weight: 500;
+                text-decoration: none;
+                user-select: none;
+                background-image: linear-gradient(to right bottom, #00E9EA, #2e55e9);
+                padding: 8px 10px;
+                border-radius: 14px;
+                box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.39);
+                transition: transform .2s;
+                will-change: transform;
+            }
+
+            .join:hover {
+                transform: scale(1.08);
+            }
+
+            & .profile {
+                width: 45px;
+                border-radius: 50px;
+                overflow: hidden;
+                cursor: pointer;
+
+                & img {
+                    width: 100%;
+                }
+            }
+
+            input {
+                display: none;
+            }
+
+            & .profile_menu {
+                position: absolute;
+                padding: 8px 0;
+                top: 80px;
+                right: 12px;
+                width: 200px;
+                background-color: rgb(17, 17, 17);
+                border-radius: 8px;
+                opacity: 0;
+                transition: .5s;
+
+                & .square {
+                    position: absolute;
+                    top: -10px;
+                    right: 58px;
+                    background-color: rgb(17, 17, 17);
+                    width: 20px;
+                    height: 20px;
+                    transform: rotate(45deg);
+                    z-index: -1;
+                }
+
+                & ul {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+
+                    & li {
+                        width: 100%;
+
+                        & a {
+                            display: flex;
+                            padding: 10px 14px;
+                            gap: 10px;
+                            text-decoration: none;
+                            width: 100%;
+                            font-size: 14px;
+                            color: var(--color-main-text);
+                            transition: .2s;
+
+                            & .icon {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 25px;
+                    
+                                & i {
+                                    
+                                }
+                            }
+
+                            & span {
+                            }
+                        }
+
+                        a:hover {
+                            color: var(--color-dark-blue);
+                        }
+                    }                 
+                }
+
+            }
+
+            #profile_menu_btn:checked + .profile_menu {
+                opacity: 100%;
+            }
+
+            & .menu {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 5px;
+                border-radius: 50%;
+                background-color: #353b48;
+                color: #fff;
+                cursor: pointer;
+                box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.39);
+
+                & .menu_icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-decoration: none;
+                    color: #fff;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
+                    transition: 1s;
+
+                    & i {
+                        font-size: 16px;
+                    }
+                }
+
+                .menu_icon:hover {
+                    color: #000;
+                    background-color: #fff;
+                }
+            }
+        }
+    }
+
+    & .bottom-line {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: transparent;
+        transition: .2s;
+    }
+    
+    & .bottom-line.roll {
+        background-color: #ffffff72;
+        border-width: 1px;
+    }
+}
+
+.side_menu {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: -250px;
+    bottom: 0;
+    height: 100%;
+    width: 250px;
+    transition: .5s;
+    background-color: rgba(1, 5, 21, 0.929);
+    backdrop-filter: blur(10px);
+
+    .side_menu.open { 
+        right: 0; 
+    }
+
+    & .exit {
+        cursor: pointer;
+
+        & i {
+            margin: 18px 0 0 18px;
+            color: #fff;
+            font-size: 24px;
+        }
+        
+    }
+
+    & .menu_list {
+        margin: 14px 0 0 0;
+        padding: 0;
+        list-style: none;
+        width: 100%;
+        font-weight: var(--desc-font-weight);
+
+        & li {         
+            transition: .5s;
+            user-select: none;
+
+            & a {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 6px 16px;
+                text-decoration: none;
+                color: #fff;
+                width: 100%;
+
+                & .icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 25px;
+                    
+    
+                    & i {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        & .expand_li {
+            user-select: none;
+
+            & label {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 6px 16px;
+                text-decoration: none;
+                color: #fff;
+                width: 100%;
+                cursor: pointer;
+                transition: .5s;
+
+                & .icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 25px;
+                }
+    
+                & #expand_icon {
+                    font-size: 16px;
+                    margin-left: auto;
+                    transition: transform 0.3s;
+                }
+
+                #expand_icon.rotate {
+                    transform: rotate(180deg);
+                }
+            }
+
+            & input {
+                display: none;
+            }
+
+            & .sub_list {
+                list-style: none;
+                padding: 0;
+                display: none;
+    
+                & li {
+                    transition: .5s;
+    
+                    & a {
+                        display: block;
+                        text-decoration: none;
+                        font-size: 14px;
+                        color: var(--color-main-text);
+                        width: 100%;
+                        padding: 6px 60px;
+                    }
+                }
+
+                li:hover {
+                    background-color: var(--color-dark-blue);
+                }
+            }
+
+            #mat-btn:checked + .sub_list {
+                display: block;
+            }
+        }
+
+        .li:hover {
+            background-color: var(--color-dark-blue);
+        }
+    }
+}
+
+body {
+    background-image: url(../../images/global/background.png);
+    background-size: cover;
+    background-attachment: fixed;
+    position: static;
+}
+
+p {
+    color: var(--color-second-text);
+    font-size: var(--desc-font-size);
+    font-weight: var(--desc-font-weight);
+    line-height: var(--desc-line-height);
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.border {
+    border: 1px solid black;
+}
+
+.span_grad {
+    background-image: linear-gradient(to right bottom, #00E9EA, #2e55e9);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.page_frame {
+    background-color: var(--color-page-frame);
+    margin: 200px 0;
+    border-radius: 8px;
+}
+
+@media screen and (min-width: 576px){
+    header {
+
+        & .header_container {
+
+            & .mindtrade_logo {                  
+
+                & .mindtrade_txt {
+                    display: inline;
+                }
+            }
+
+            & .header-buttons {
+
+                .search-box:hover > .search-txt {
+                    width: 200px;
+                    padding: 0 6px;
+                }
+
+                .search-box:hover > .search-btn {
+                    background-color: #fff;
+                    color: #000;
+                }
+            }
+        }
+    }
+}
+
+/* ----- GLOBAL STYLE END ----- */

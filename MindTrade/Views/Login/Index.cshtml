@@ -1,0 +1,104 @@
+﻿@model LoginModel;
+
+@{
+    Layout = "_LayoutCompacto";
+    ViewData["Title"] = "Login";
+}
+
+<!--index css-->
+<link rel="stylesheet" href="~/css/usuario/login.css" asp-append-version="true" />
+<!--bootstrap-->
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<!--js-->
+<script src="~/js/login_signIn/login.js"></script>
+
+<div class="container-md p-0">
+
+    <div class="login_block">
+        <a class="back" asp-area="" asp-controller="Home" asp-action="Index">
+            <i class="fa-solid fa-xmark"></i>
+        </a>
+
+        <div class="switch">
+            <a class="login_btn" asp-area="" asp-controller="Login" asp-action="Index">
+                <span>Login</span>
+            </a>
+            <a class="cadastro_btn" asp-area="" asp-controller="Register" asp-action="Index">
+                <span>Cadastro</span>
+            </a>
+        </div>
+
+        @if (TempData["MensagemErro"] != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" aria-label="Close">X</button>
+                @TempData["MensagemErro"]
+            </div>
+        }
+
+        <section class="login">
+            <h1 class="login_title">Entrar</h1>
+            <form asp-controller="Login" asp-action="Entrar" method="post">
+                <label for="email" class="mt-3 mb-1 label">Email</label>
+                <div class="mb-2 dados_container">
+                    <input type="email" asp-for="Email" class="dados_subcontainer" id="">
+                </div>
+                <div class="warning">
+                    @Html.ValidationMessageFor(x => x.Email)
+                </div> 
+
+                <label for="email" class="mb-1 label">Senha</label>
+                <div class="mb-3 dados_container">
+                    <input type="password" asp-for="Senha" class="dados_subcontainer">
+                </div>
+                <div class="warning">
+                    @Html.ValidationMessageFor(x => x.Senha)
+                </div>
+
+                <div class="rr_container">
+
+                    <div class="remember_cont">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label remember" for="exampleCheck1">Lembrar de mim</label>
+                    </div>
+
+                    <p class="recover">Recuperar senha</p>
+
+                </div>
+
+                <button type="submit" class="submit_btn">Entrar</button>
+            </form>
+
+            <div class="or mt-2">
+                <div></div>
+                <span>ou</span>
+                <div></div>
+            </div>
+
+            <div class="socials mt-2">
+                <div>
+                    <img src="~/images/global/Icons/socials/google.png" alt="">
+                    <span>Continuar com Google</span>
+                </div>
+
+                <div class="mt-2">
+                    <img src="~/images/global/Icons/socials/apple.png" alt="">
+                    <span>Continuar com Apple</span>
+                </div>
+
+                <div class="mt-2">
+                    <img src="~/images/global/Icons/socials/facebook.png" alt="">
+                    <span>Continuar com Facebook</span>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <div class="login_image">
+        <img class="" src="~/images/index/mindtrade-student.png" alt="">
+    </div>
+</div>
+
+
+

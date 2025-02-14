@@ -1,0 +1,50 @@
+﻿@model UsuarioModel
+
+<nav class="header_container">
+    <a class="mindtrade_logo" asp-area="" asp-controller="Home" asp-action="Index">
+        <img src="~/images/global/logo-mindtrade.png" alt="Alternate Text" />
+        <span class="mindtrade_txt">mind<span class="span_grad">trade</span></span>
+    </a>
+
+    <div class="header-buttons">
+        <div class="search-box">
+            <input class="search-txt" type="text" name="" placeholder="Pesquisar">
+            <a href="" class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+        </div>
+
+        <label class="profile" for="profile_menu_btn">
+            <img src="~/images/user/user_avatar_01.png" alt="Avatar do usuário" />
+        </label>
+
+        <input type="checkbox" id="profile_menu_btn">
+        <div class="profile_menu">
+            <div class="square"></div>
+            <ul>
+                <li>
+                    <a href="#">
+                        <div class="icon">
+                        <i class="fa-solid fa-user"></i>
+                        </div>
+                        <span>Perfil</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Login" asp-action="Sair">
+                        <div class="icon">
+                            <i class="fa-solid fa-door-open"></i>
+                        </div>
+                        <span>Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="menu">
+            <a onclick=showSidebar() class="menu_icon">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+        </div>
+    </div>
+</nav>

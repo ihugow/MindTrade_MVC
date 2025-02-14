@@ -1,0 +1,97 @@
+﻿@import url('~/css/global/global-style.css');
+
+.page_frame {
+    margin: 130px auto;
+
+    & .glow_bar {
+        position: relative;
+        margin: auto;
+        top: -4px;
+        background-color: var(--color-light-blue);
+        width: 100px;
+        height: 4px;
+        border-radius: 8px 8px 0 0;
+        box-shadow: 0 5px 15px var(--color-light-blue);
+    }
+
+    & .sobre {
+        padding: 20px 10px 70px 10px;
+
+        & h1 {
+            margin: 20px auto auto auto;
+            color: var(--color-main-text);
+            font-size: var(--t1-font-size);
+            font-weight: var(--t1-font-weight);
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        & p {
+            margin: 20px auto auto auto;
+            font-size: 1.2rem;
+            line-height: normal;
+
+            & span {
+                color: var(--color-main-text);
+                font-weight: 700;
+            }
+        }
+
+        & h2 {
+            margin: 40px auto auto auto;
+            color: var(--color-main-text);
+            font-size: var(--t2-font-size);
+            font-weight: var(--t2-font-weight);
+        }
+
+        .fundators {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin: 70px auto auto auto;
+
+            & .fundator {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+
+                & img {
+                    width: 130px;
+                    border-radius: 50%;
+                    border: 2px solid #00d8ff;
+                }
+
+                & span {
+                    color: #fff;
+                    font-size: 1.3rem;
+                    font-weight: 700;
+                }
+                
+            }
+        }
+    }
+
+    & .glow_bar_end {
+        position: relative;
+        margin: auto;
+        top: 4px;
+        background-color: var(--color-light-blue);
+        width: 100px;
+        height: 4px;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 -5px 15px var(--color-light-blue);
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+    .page_frame {
+
+        & .sobre {
+            padding: 40px 40px 70px 40px;
+        }
+    }
+}

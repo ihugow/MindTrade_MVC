@@ -1,0 +1,96 @@
+﻿@model UsuarioModel
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MindTrade</title>
+    <!--bootstrap--><link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!--font awesome--><script src="https://kit.fontawesome.com/a2ae10f3c7.js" crossorigin="anonymous"></script>
+    <!--global css--><link rel="stylesheet" href="~/css/global/global-style.css" asp-append-version="true" />
+    <script src="~/js/global.js"></script>
+</head>
+
+<body>
+    <header>
+
+        @await Component.InvokeAsync("HeaderContent")
+
+        <div class="bottom-line"></div>
+
+    </header>
+
+
+    <main role="main" class="">
+
+        <nav class="side_menu">
+            <a class="exit" onClick=hideSidebar()>
+                <i class="fa-solid fa-xmark"></i>
+            </a>
+            <ul class="menu_list">
+                <li class="li">
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
+                        <div class="icon">
+                            <i class="fa-solid fa-house"></i>
+                        </div>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="li">
+                    <a asp-area="" asp-controller="Login" asp-action="Index">
+                        <div class="icon">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <span>Minha Conta</span>
+                    </a>
+                </li>
+                <li class="expand_li">                             
+                    <label class="li" for="mat-btn">
+                        <div class="icon">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+                        <span>Matérias</span>
+                        <i class="fas fa-caret-down" id="expand_icon"></i>
+                    </label>
+
+                    <input type="checkbox" id="mat-btn">
+                    <ul class="sub_list">
+                        <li><a asp-area="" asp-controller="Materias" asp-action="Matematica">Matemática</a></li>
+                        <li><a asp-area="" asp-controller="Materias" asp-action="Portugues">Português</a></li>
+                        <li><a asp-area="" asp-controller="Materias" asp-action="Historia">História</a></li>
+                        <li><a asp-area="" asp-controller="Materias" asp-action="Quimica">Química</a></li>
+                        <li><a asp-area="" asp-controller="Materias" asp-action="Biologia">Biologia</a></li>
+                        <li><a asp-area="" asp-controller="Materias" asp-action="Geografia">Geografia</a></li>
+
+                    </ul>   
+                </li> 
+                <li class="li">
+                    <a asp-area="" asp-controller="Sobre" asp-action="Index">
+                        <div class="icon">
+                            <i class="fa-solid fa-info"></i>
+                        </div>
+                        <span>Sobre</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        @RenderBody()
+    </main>
+
+    @if (ViewBag.OcultarFooter == null || ViewBag.OcultarFooter == false)
+    {
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2024 - MindTrade - Todos os direitos reservados
+            </div>
+        </footer>
+    }
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
