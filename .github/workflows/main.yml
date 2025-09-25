@@ -48,7 +48,7 @@ jobs:
       # Este step só roda se todos os steps anteriores (incluindo o deploy) forem bem-sucedidos.
       - name: Notify Sleuth of Deployment
         if: success()
-        uses: sleuth-io/sleuth-action@v2.0.1
+        uses: sleuth-io/action-sleuth@v2
         with:
           # A chave de API que você configurou nos Secrets do GitHub.
           api_key: ${{ secrets.SLEUTH_API_KEY }}
