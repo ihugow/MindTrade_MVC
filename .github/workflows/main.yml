@@ -42,7 +42,7 @@ jobs:
         uses: baratrion/sleuth-action@main
         with:
           organization-slug: Hugo-test
-          deployment-slug: hugo-test-app
+          deployment-slug: mindtrade_mvc
           api-key: ${{ secrets.SLEUTH_API_KEY }}
           environment: production
           sha: ${{ github.sha }}
