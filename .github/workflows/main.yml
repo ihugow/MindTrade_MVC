@@ -36,26 +36,13 @@ jobs:
       - name: Test
         run: dotnet test --configuration Release --no-build --verbosity normal
 
-      # --- DEPLOY ---
-      - name: Make deploy script executable
-        run: chmod +x ./deploy.sh
-
-      - name: Deploy
-        id: deploy
-        run: ./deploy.sh
-
       # --- NOTIFICAÇÃO PARA O SLEUTH ---
-      # Este step só roda se todos os steps anteriores (incluindo o deploy) forem bem-sucedidos.
       - name: Notify Sleuth of Deployment
         if: success()
         uses: baratrion/sleuth-action@main
         with:
-          # A chave de API que você configurou nos Secrets do GitHub.
           api_key: ${{ secrets.SLEUTH_API_KEY }}
-
-          # O nome do ambiente. DEVE ser idêntico ao nome do ambiente no Sleuth.
           environment: production
-
           # Opcional, mas altamente recomendado para métricas precisas.
           # Envia o hash do commit que foi implantado.
           revision: ${{ github.sha }}
