@@ -41,8 +41,6 @@ jobs:
         if: success()
         uses: baratrion/sleuth-action@main
         with:
-          api_key: ${{ secrets.SLEUTH_API_KEY }}
+          api-key: ${{ secrets.SLEUTH_API_KEY }}
           environment: production
-          # Opcional, mas altamente recomendado para métricas precisas.
-          # Envia o hash do commit que foi implantado.
-          revision: ${{ github.sha }}
+          sha: ${{ github.sha }}
