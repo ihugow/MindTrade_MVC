@@ -1,0 +1,70 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+# evita dois deploys concorrentes para o mesmo ambiente
+concurrency:
+  group: prod-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production   # usa o ambiente “production” do GitHub (opcional, mas recomendado)
+    steps:
+      - name: Checkout (full history p/ métricas)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # importante para ferramentas que calculam lead time (histórico completo)
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'   # ajuste a versão do seu projeto
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build (Release)
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test --configuration Release --no-build --verbosity normal
+
+      # --- DEPLOY ---
+      # Se você usa script próprio:
+      - name: Make deploy script executable
+        run: chmod +x ./deploy.sh
+
+      - name: Deploy
+        id: deploy
+        run: ./deploy.sh
+
+      # Se você usa Azure WebApp, troque o bloco acima por algo como:
+      # - name: Publish
+      #   run: dotnet publish ./src/SeuProjeto.csproj -c Release -o ./out
+      # - name: Deploy to Azure WebApp
+      #   uses: azure/webapps-deploy@v3
+      #   with:
+      #     app-name: SEU_WEBAPP
+      #     publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+      #     package: ./out
+
+      # --- SLEUTH NOTIFY ---
+      # Só notifica se o deploy tiver sido bem-sucedido
+      - name: Notify Sleuth
+        if: ${{ success() && steps.deploy.outcome == 'success' }}
+        uses: sleuth-io/sleuth-action@v1
+        with:
+          api_key: ${{ secrets.SLEUTH_API_KEY }}   # crie esse secret no repo/org
+          environment: production                  # precisa bater com o ambiente definido no Sleuth
+          # opcional, mas útil:
+          # revision: ${{ github.sha }}
+          # repo: ${{ github.repository }}
+          # deployed_at: ${{ github.event.head_commit.timestamp }}
